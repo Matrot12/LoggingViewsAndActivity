@@ -12,7 +12,7 @@ class LessonListActivity : AppCompatActivity() {
         val EXTRA_LESSON_ID = "LESSON_ID_EXTRA"
     }
     val lessonAdapter = LessonAdapter() {
-        //Toast.makeText(this, "Lesson with name: ${it.id} has been clicked", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Lesson with name: ${it.id} has been clicked", Toast.LENGTH_LONG).show()
 
         val intent = Intent(this, LessonRatingActivity::class.java)
         intent.putExtra(EXTRA_LESSON_ID, it.id)
