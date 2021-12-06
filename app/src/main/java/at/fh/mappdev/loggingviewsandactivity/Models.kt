@@ -1,18 +1,26 @@
 package at.fh.mappdev.loggingviewsandactivity
 
+import com.squareup.moshi.JsonClass
 
-class LessonRating(val ratingValue:Int , val feeback:String )
+@JsonClass(generateAdapter = true)
+class LessonRating(val ratingValue:Double , val feeback:String )
 
+@JsonClass(generateAdapter = true)
 class Lesson(
     val id: String, val name: String, val date: String, val topic: String,
-    val type: LessonType, val lecturers: List<Lecturer>, val ratings: List<LessonRating>
+    val type: LessonType, val lecturers: List<Lecturer>, var ratings: List<LessonRating>
 ) {
     fun ratingAverage(): Double {
-        return 0.0
+        var ratingResult = 0.0
+        if (ratings.size > 0){
+            ratingResult = ratings.sumOf { it.ratingValue } / ratings.size
+        }
+        return ratingResult
     }
 }
 
-class Lecturer(val name:String)
+@JsonClass(generateAdapter = true)
+data class Lecturer(val name:String)
 
 enum class LessonType(val description: String) {
     LECTURE("Lecture"),
