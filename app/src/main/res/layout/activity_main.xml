@@ -11,10 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="683dp">
 
         <Button
             android:id="@+id/share_main"
@@ -52,11 +50,18 @@
         android:id="@+id/open_lessons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Lessons"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="397dp" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="285dp"
+        android:layout_height="106dp"
+        app:constraint_referenced_ids="linearLayout,open_lessons"
+        app:flow_horizontalGap="15dp"
+        app:flow_maxElementsWrap="1"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="chain"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

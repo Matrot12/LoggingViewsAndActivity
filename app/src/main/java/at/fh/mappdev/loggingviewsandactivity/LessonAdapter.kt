@@ -3,9 +3,11 @@ package at.fh.mappdev.loggingviewsandactivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class LessonAdapter(val clickListener: (lesson: Lesson) -> Unit): RecyclerView.Adapter<LessonViewHolder>() {
 
@@ -23,6 +25,7 @@ class LessonAdapter(val clickListener: (lesson: Lesson) -> Unit): RecyclerView.A
 
     override fun onBindViewHolder(holder: LessonViewHolder, position: Int) {
         holder.bindItem(lessonList[position])
+
 
     }
 
@@ -45,6 +48,13 @@ class LessonViewHolder(itemView: View, val clickListener: (lesson: Lesson) -> Un
 
         itemView.setOnClickListener {
             clickListener(lesson)
+
+            val imageView = itemView.findViewById<ImageView>(R.id.imageView)
+
+            Glide
+                .with(itemView)
+                .load(lesson.imageUrl)
+                .into(imageView)
         }
     }
 

@@ -72,7 +72,8 @@ class LessonListActivity : AppCompatActivity() {
                         "name": "Peter Salhofer"
                     }
                 ],
-                "ratings": []
+                "ratings": [],
+                imageUrl": ""
             }
         """
         val moshi = Moshi.Builder().build()

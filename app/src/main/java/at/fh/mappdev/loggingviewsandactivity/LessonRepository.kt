@@ -20,7 +20,8 @@ object LessonRepository {
                 "Introduction",
                 LessonType.LECTURE,
                 listOf(lecturerSalhofer, lecturerBloder),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "1",
@@ -29,7 +30,8 @@ object LessonRepository {
                 "Go2Kotlin",
                 LessonType.LECTURE,
                 listOf(lecturerSalhofer),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "2",
@@ -38,7 +40,8 @@ object LessonRepository {
                 "Go2Kotlin",
                 LessonType.PRACTICAL,
                 listOf(lecturerSalhofer),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "3",
@@ -47,7 +50,8 @@ object LessonRepository {
                 "Go2Kotlin-OOP",
                 LessonType.LECTURE,
                 listOf(lecturerSalhofer),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "4",
@@ -56,7 +60,8 @@ object LessonRepository {
                 "Go2Kotlin-OOP",
                 LessonType.PRACTICAL,
                 listOf(lecturerSalhofer),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "5",
@@ -65,7 +70,8 @@ object LessonRepository {
                 "SCM",
                 LessonType.LECTURE,
                 listOf(lecturerSalhofer),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "6",
@@ -74,7 +80,8 @@ object LessonRepository {
                 "Android Basics",
                 LessonType.LECTURE,
                 listOf(lecturerBloder),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "7",
@@ -83,7 +90,8 @@ object LessonRepository {
                 "Android Basics",
                 LessonType.PRACTICAL,
                 listOf(lecturerBloder),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "8",
@@ -92,7 +100,8 @@ object LessonRepository {
                 "Recycler View",
                 LessonType.LECTURE,
                 listOf(lecturerBloder),
-                mutableListOf()
+                mutableListOf(),
+                ""
             ),
             Lesson(
                 "9",
@@ -101,7 +110,8 @@ object LessonRepository {
                 "Android Basics",
                 LessonType.PRACTICAL,
                 listOf(lecturerBloder),
-                mutableListOf()
+                mutableListOf(),
+                ""
             )
         )
     }
