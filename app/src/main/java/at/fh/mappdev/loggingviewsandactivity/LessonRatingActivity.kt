@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import at.fh.mappdev.loggingviewsandactivity.LessonListActivity.Companion.EXTRA_LESSON_ID
 import at.fh.mappdev.loggingviewsandactivity.LessonRepository.lessonById
 import at.fh.mappdev.loggingviewsandactivity.LessonRepository.rateLesson
+import com.bumptech.glide.Glide
 
 class LessonRatingActivity : AppCompatActivity() {
     companion object {
@@ -31,9 +32,23 @@ class LessonRatingActivity : AppCompatActivity() {
                 success = {
                     // handle success
                     val thislesson = it
-                    val textView = findViewById<TextView>(R.id.lesson_rating_header)
-                    textView.text = thislesson.name;
+                    //val textView = findViewById<TextView>(R.id.lesson_rating_header)
+                    title = thislesson.name
                     lessonIdAsInt = lessonID.toInt()
+
+                    val imageView = findViewById<ImageView>(R.id.lesson_image)
+                    Glide.with(this)
+                        .load(thislesson.imageUrl)
+                        .into(imageView)
+                    findViewById<TextView>(R.id.lesson_name).text = title
+                    findViewById<RatingBar>(R.id.lesson_avg_ratingBar).rating = it.ratingAverage().toFloat()
+                    val rating  = it.ratingAverage().round(2)
+
+                    findViewById<TextView>(R.id.lesson_avg_ratingText).text = rating.toString()
+
+                    val lastFeedback = findEntry(it.ratings)
+                    findViewById<TextView>(R.id.last_rating).text = lastFeedback
+
                 },
                 error = {
                     // handle error
@@ -43,19 +58,18 @@ class LessonRatingActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.rate_lesson).setOnClickListener {
-            val lessonrate = findViewById<RatingBar>(R.id.lesson_rating_bar).rating.toDouble()
-            val lessonfeed = findViewById<EditText>(R.id.lesson_feedback).text.toString()
-            val ratingLesson = LessonRating(lessonrate,lessonfeed)
+            val ratingBar = findViewById<RatingBar>(R.id.lesson_rating_bar).rating.toDouble()
+            val feedback = findViewById<EditText>(R.id.lesson_feedback).text.toString()
+            val ratedLesson = LessonRating(ratingBar, feedback)
             //LessonRepository.rateLesson(lessonID,rating)
 
             rateLesson(
                 lessonIdAsInt,
-                ratingLesson,
+                ratedLesson,
                 success = {
                     // handle success
                     val thislesson = it
-                    val textView = findViewById<TextView>(R.id.lesson_rating_header)
-                    textView.text = thislesson.name;
+
                 },
                 error = {
                     // handle error
@@ -72,4 +86,15 @@ class LessonRatingActivity : AppCompatActivity() {
 
     }
 
+    private fun findEntry(list:List<LessonRating>):String {
+        var result = ""
+        for (entry in list){
+            if (entry.feedback != "") {
+                result = entry.feedback
+            }
+            else result = ""
+        }
+        return result
+    }
+    private fun Double.round(decimals :Int) :Double = "%.${decimals}f".format(this).toDouble()
 }

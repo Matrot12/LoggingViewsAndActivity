@@ -57,11 +57,14 @@
     <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="285dp"
         android:layout_height="106dp"
+        android:layout_marginTop="224dp"
         app:constraint_referenced_ids="linearLayout,open_lessons"
         app:flow_horizontalGap="15dp"
         app:flow_maxElementsWrap="1"
         app:flow_verticalGap="10dp"
         app:flow_wrapMode="chain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

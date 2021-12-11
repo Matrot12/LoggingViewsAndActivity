@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 class API {
     object LessonApi {
-        const val accessToken = "43aa6187-8209-4978-a0e6-e23fb7c4824f"
+        const val accessToken = "89ce7ca8-96f3-4bda-b77a-71174b024558"
         val retrofit: Retrofit
         val retrofitService: LessonApiService
         init {

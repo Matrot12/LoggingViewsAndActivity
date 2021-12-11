@@ -44,12 +44,12 @@ class LessonViewHolder(itemView: View, val clickListener: (lesson: Lesson) -> Un
         itemView.findViewById<TextView>(R.id.item_lesson_topic).text = lesson.topic
         itemView.findViewById<RatingBar>(R.id.item_lesson_avg_rating_bar).rating = lesson.ratingAverage().toFloat()
         itemView.findViewById<TextView>(R.id.item_lesson_lecturers).text = lesson.lecturers.joinToString(){it.name}
-        itemView.findViewById<TextView>(R.id.item_lesson_rating_count).text = lesson.ratings.size.toString()
+        itemView.findViewById<TextView>(R.id.item_lesson_avg_rating_value).text = lesson.ratings.size.toString()
 
         itemView.setOnClickListener {
             clickListener(lesson)
 
-            val imageView = itemView.findViewById<ImageView>(R.id.imageView)
+            val imageView = itemView.findViewById<ImageView>(R.id.item_imageView)
 
             Glide
                 .with(itemView)
