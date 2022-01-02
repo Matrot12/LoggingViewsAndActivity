@@ -6,45 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <Button
+        android:id="@+id/open_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="683dp">
+        android:layout_weight="1"
+        android:text="Rating"
+        tools:layout_editor_absoluteX="215dp"
+        tools:layout_editor_absoluteY="224dp" />
 
-        <Button
-            android:id="@+id/share_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Share" />
+    <Button
+        android:id="@+id/open_views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Views"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="224dp" />
 
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/open_views"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Views" />
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/open_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Rating" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/share_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Share"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="224dp" />
 
     <Button
         android:id="@+id/open_lessons"
@@ -54,17 +41,34 @@
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="397dp" />
 
+    <Button
+        android:id="@+id/open_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings" />
+
     <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
         android:layout_width="285dp"
         android:layout_height="106dp"
         android:layout_marginTop="224dp"
-        app:constraint_referenced_ids="linearLayout,open_lessons"
+        app:constraint_referenced_ids="share_main,open_lessons,open_views,open_rating,open_settings"
         app:flow_horizontalGap="15dp"
-        app:flow_maxElementsWrap="1"
+        app:flow_maxElementsWrap="3"
         app:flow_verticalGap="10dp"
         app:flow_wrapMode="chain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/view_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

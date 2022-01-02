@@ -1,6 +1,12 @@
 package at.fh.mappdev.loggingviewsandactivity
 
+import android.os.Parcel
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
+
+
 
 enum class LessonType(val description: String) {
     LECTURE("Lecture"),
@@ -27,6 +33,10 @@ class Lesson(
 
 @JsonClass(generateAdapter = true)
 data class Lecturer(val name:String)
+
+@Entity
+class LessonNote(@PrimaryKey val id: String, val lessonName: String?, val text: String?)
+
 
 
 

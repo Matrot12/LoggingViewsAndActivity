@@ -10,12 +10,15 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import at.fh.mappdev.loggingviewsandactivity.LessonListActivity.Companion.EXTRA_LESSON_ID
 import at.fh.mappdev.loggingviewsandactivity.LessonRepository.lessonById
+import at.fh.mappdev.loggingviewsandactivity.LessonRepository.lessonsList
 import at.fh.mappdev.loggingviewsandactivity.LessonRepository.rateLesson
 import com.bumptech.glide.Glide
 
 class LessonRatingActivity : AppCompatActivity() {
     companion object {
         val EXTRA_ADDED_OR_EDITED_RESULT = "EXTRA_ADDED_OR_EDITED_RESULT"
+       // val EXTRA_LESSON_ID = "LESSON_ID_EXTRA"
+        val EXTRA_LESSON_NAME = "EXTRA_LESSON_NAME"
 
     }
 
@@ -25,6 +28,8 @@ class LessonRatingActivity : AppCompatActivity() {
 
         val lessonID = intent.getStringExtra(EXTRA_LESSON_ID)
         var lessonIdAsInt = 0
+        var lessonName = ""
+
 
         if (lessonID != null){
             lessonById(
@@ -34,12 +39,14 @@ class LessonRatingActivity : AppCompatActivity() {
                     val thislesson = it
                     //val textView = findViewById<TextView>(R.id.lesson_rating_header)
                     title = thislesson.name
+                    lessonName = thislesson.name
                     lessonIdAsInt = lessonID.toInt()
 
                     val imageView = findViewById<ImageView>(R.id.lesson_image)
                     Glide.with(this)
                         .load(thislesson.imageUrl)
                         .into(imageView)
+
                     findViewById<TextView>(R.id.lesson_name).text = title
                     findViewById<RatingBar>(R.id.lesson_avg_ratingBar).rating = it.ratingAverage().toFloat()
                     val rating  = it.ratingAverage().round(2)
@@ -57,11 +64,12 @@ class LessonRatingActivity : AppCompatActivity() {
             )
         }
 
+
         findViewById<Button>(R.id.rate_lesson).setOnClickListener {
             val ratingBar = findViewById<RatingBar>(R.id.lesson_rating_bar).rating.toDouble()
             val feedback = findViewById<EditText>(R.id.lesson_feedback).text.toString()
             val ratedLesson = LessonRating(ratingBar, feedback)
-            //LessonRepository.rateLesson(lessonID,rating)
+
 
             rateLesson(
                 lessonIdAsInt,
@@ -84,17 +92,26 @@ class LessonRatingActivity : AppCompatActivity() {
             finish()
         }
 
+        findViewById<Button>(R.id.open_lessonnote).setOnClickListener {
+            val intent = Intent(this, LessonNoteActivity::class.java)
+            intent.putExtra(EXTRA_LESSON_ID, lessonID)
+            intent.putExtra(EXTRA_LESSON_NAME, lessonName)
+            startActivityForResult(intent,LessonNoteActivity.ADD_NOTE_REQUEST)
+
+
+        }
+
     }
 
-    private fun findEntry(list:List<LessonRating>):String {
-        var result = ""
-        for (entry in list){
-            if (entry.feedback != "") {
-                result = entry.feedback
-            }
-            else result = ""
+    private fun findEntry(list:List<LessonRating>, i:Int = 0):String{
+        if(list.size <= i) return ""
+
+        if(list[i].feedback != "") return list[i].feedback
+
+        return findEntry(list, i+1)
         }
-        return result
-    }
+
     private fun Double.round(decimals :Int) :Double = "%.${decimals}f".format(this).toDouble()
+
+
 }
