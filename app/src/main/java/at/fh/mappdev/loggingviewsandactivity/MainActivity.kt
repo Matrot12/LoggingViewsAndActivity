@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+        findViewById<Button>(R.id.open_viewmodel).setOnClickListener {
+            val intent = Intent(this, ViewModelActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
